@@ -1,1 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description"
+          content="Thrisha - Artificial Intelligence and Machine Learning Engineering Student Portfolio">
+
+    <title>Thrisha | AI & ML Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b16;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            background: rgba(8, 11, 22, 0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #8b7cff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #9d91ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 8% 70px;
+            gap: 50px;
+            background:
+                radial-gradient(circle at 80% 30%, rgba(102, 88, 255, 0.22), transparent 35%),
+                radial-gradient(circle at 20% 80%, rgba(0, 190, 255, 0.10), transparent 30%);
+        }
+
+        .hero-text {
+            max-width: 700px;
+        }
+
+        .small-title {
+            color: #9d91ff;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 80px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #9d91ff;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            color: #c9c9d5;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #a7a8b5;
+            max-width: 620px;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #8b7cff;
+            color: white;
+        }
+
+        .secondary {
+            border: 1px solid #55586b;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* PROFILE CIRCLE */
+        .profile {
+            width: 310px;
+            height: 310px;
+            min-width: 310px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #8b7cff, #3bd5ff);
+            box-shadow: 0 0 80px rgba(139,124,255,0.3);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .profile-inner {
+            width: 285px;
+            height: 285px;
+            border-radius: 50%;
+            background: #101423;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            color: #aaaabd;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #999baa;
+        }
+
+        /* ABOUT */
+        .about-box {
+            max-width: 900px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .about-box p {
+            color: #b7b8c5;
+            font-size: 17px;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 18px;
+        }
+
+        .skill {
+            padding: 25px;
+            text-align: center;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-7px);
+            border-color: #8b7cff;
+        }
+
+        .skill h3 {
+            margin-bottom: 7px;
+        }
+
+        .skill p {
+            color: #9698a8;
+            font-size: 14px;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .project {
+            padding: 28px;
+            border-radius: 18px;
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,0.06),
+                rgba(255,255,255,0.02)
+            );
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .project-number {
+            color: #8b7cff;
+            font-weight: bold;
+        }
+
+        .project h3 {
+            margin: 12px 0;
+            font-size: 22px;
+        }
+
+        .project p {
+            color: #a3a5b4;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 4px 3px 0 0;
+            border-radius: 20px;
+            background: rgba(139,124,255,0.12);
+            color: #aaa0ff;
+            font-size: 12px;
+        }
+
+        /* EDUCATION */
+        .education-card {
+            max-width: 800px;
+          margin: auto;
+            padding: 30px;
+            border-left: 4px solid #8b7cff;
+            background: rgba(255,255,255,0.04);
+            border-radius: 10px;
+        }
+
+        .education-card h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .education-card p {
+            color: #a6a8b6;
+        }
+
+        /* CERTIFICATES */
+        .certificate {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.04);
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .certificate h3 {
+            margin-bottom: 10px;
+        }
+
+        .certificate p {
+            color: #a6a8b6;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            max-width: 750px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: #a6a8b6;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: white;
+            border: 1px solid #55586b;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #8b7cff;
+            border-color: #8b7cff;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #777989;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 12px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 130px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .profile {
+                width: 230px;
+                height: 230px;
+                min-width: 230px;
+            }
+
+            .profile-inner {
+                width: 210px;
+                height: 210px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Thrisha.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <div class="small-title">
+                WELCOME TO MY PORTFOLIO
+            </div>
+
+            <h1>
+                Hi, I'm <span>Thrisha</span>
+            </h1>
+
+            <h2>
+                AI & Machine Learning Engineering Student
+            </h2>
+
+            <p>
+                I am passionate about technology, artificial intelligence,
+                machine learning and building creative digital projects.
+                This portfolio showcases my learning journey, projects
+                and skills.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    View My Projects
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+
+        <div class="profile">
+            <div class="profile-inner">
+                <div>
+                    <strong>AI / ML</strong>
+                    <br>
+                    Student
+                    <br><br>
+                    <small>Learning • Building • Growing</small>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <h2>About Me</h2>
+            <p>A little introduction</p>
+        </div>
+
+        <div class="about-box">
+
+            <p>
+                I am an Artificial Intelligence and Machine Learning
+                engineering student who enjoys exploring technology,
+                programming and creative problem solving. I am continuously
+                developing my technical skills through academic learning,
+                projects and hands-on experiences.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <div class="section-title">
+            <h2>My Skills</h2>
+            <p>Technologies and areas I am learning</p>
+        </div>
+
+        <div class="skills">
+
+            <div class="skill">
+                <h3>Python</h3>
+                <p>Programming</p>
+            </div>
+
+            <div class="skill">
+                <h3>HTML</h3>
+                <p>Web Structure</p>
+            </div>
+
+            <div class="skill">
+                <h3>CSS</h3>
+                <p>Web Design</p>
+            </div>
+
+            <div class="skill">
+                <h3>JavaScript</h3>
+                <p>Web Interactivity</p>
+            </div>
+
+            <div class="skill">
+                <h3>AI</h3>
+                <p>Artificial Intelligence</p>
+            </div>
+
+            <div class="skill">
+                <h3>Machine Learning</h3>
+                <p>ML Concepts</p>
+            </div>
+
+            <div class="skill">
+                <h3>GitHub</h3>
+                <p>Version Control</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+         <div class="section-title">
+            <h2>Featured Projects</h2>
+            <p>Some of my academic and practical work</p>
+        </div>
+
+        <div class="projects">
+
+            <div class="project">
+
+                <div class="project-number">01</div>
+
+                <h3>
+                    Obstacle Detection & Bluetooth Rover
+                </h3>
+
+                <p>
+                    A team-based engineering project combining
+                    obstacle detection with Bluetooth-controlled
+                    rover functionality.
+                </p>
+
+                <span class="tag">Arduino</span>
+                <span class="tag">Sensors</span>
+                <span class="tag">Bluetooth</span>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">02</div>
+
+                <h3>
+                    Personal Portfolio Website
+                </h3>
+
+                <p>
+                    A responsive personal website created to
+                    showcase my skills, projects, education and
+                    achievements.
+                </p>
+
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">03</div>
+
+                <h3>
+                    Future Project
+                </h3>
+
+                <p>
+                    A space for my upcoming AI, ML or software
+                    development project.
+                </p>
+
+                <span class="tag">Coming Soon</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="education">
+
+        <div class="section-title">
+            <h2>Education</h2>
+            <p>My academic journey</p>
+        </div>
+
+        <div class="education-card">
+
+            <h3>Bachelor of Engineering</h3>
+
+            <p>
+                Artificial Intelligence and Machine Learning
+            </p>
+
+            <br>
+
+            <p>
+                Visvesvaraya Technological University (VTU)
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CERTIFICATES -->
+    <section id="certificates">
+
+        <div class="section-title">
+            <h2>Certificates & Achievements</h2>
+            <p>Learning experiences and accomplishments</p>
+        </div>
+
+        <div class="certificate">
+
+            <h3>Project Completion Certificate</h3>
+
+            <p>
+                Team-based engineering project completion
+                certificate.
+            </p>
+
+            <br>
+
+            <p>
+                More certificates will be added here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="section-title">
+            <h2>Let's Connect</h2>
+            <p>Feel free to connect with me</p>
+        </div>
+
+        <div class="contact-box">
+
+            <p>
+                I am always interested in learning, collaborating and exploring new opportunities.
+            </p>
+
+            <div class="social-links">
+
+                <a href="#" target="_blank">
+                    LinkedIn
+                </a>
+
+                <a href="https://github.com/thrishacodes"
+                   target="_blank">
+                    GitHub
+                </a>
+
+                <a href="mailto:your-email@gmail.com">
+                    Email
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 Thrisha | Personal Portfolio
+        </p>
+
+    </footer>
+
+</body>
+</html>
+          
+      
+          
